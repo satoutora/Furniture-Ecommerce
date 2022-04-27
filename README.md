@@ -48,7 +48,7 @@ II. Chi tiết các tính năng
 - Mô tả: Nếu người dùng chưa có cửa hàng, người dùng có thể tạo 1 cửa hàng cá nhân của riêng mình. Mỗi tài khoản chỉ có thể tạo 1 cửa hàng cá nhân
 
 4. Thêm một sản phẩm mới cho cửa hàng
-Mô tả: Người dùng thêm mới 1 sản phẩm cho cửa hàng của mình quản lý 
+- Mô tả: Người dùng thêm mới 1 sản phẩm cho cửa hàng của mình quản lý 
 
 5. Chỉnh sửa sản phẩm, cửa hàng
 - Mô tả: Người dùng thay đổi, chỉnh sửa thông tin về cửa hàng, sản phẩm, hoặc xóa sản phẩm ra khỏi cửa hàng
