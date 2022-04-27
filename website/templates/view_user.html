@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-account-area  pt-80 pb-80">
+    <div class="container">	
+        <div class="my-account">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel">
+                            <div class="my-account-menu" >
+                                <a  data-toggle="collapse" data-parent="#accordion" href="#my-info" >
+                                User Information
+                                </a>
+                            </div>
+                            <div id="my-info" class="panel-collapse collapse in" >
+                                <div class="panel-body">
+                                    <div class="billing-details shop-cart-table">
+                                        <input type="text" readonly value="Full name: {{v_user.full_name}}">
+                                        <input type="text" readonly value="User name: {{v_user.user_name}}">
+                                        {% if v_user.type == 0 %}
+                                        <input type="text" readonly value="Type: admin">
+                                        {% else %}
+                                        <input type="text" readonly value="Type: user">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if user.id == v_user.id %}
+                        <div class="panel">
+                            <div class="my-account-menu">
+                                <a class="collapsed" data-parent="#accordion"  data-toggle="collapse"  href="#my-billing" >
+                                Edit
+                                </a>
+                            </div>
+                            <div id="my-billing" class="panel-collapse collapse" >
+                                <div class="panel-body">
+                                    <div class="billing-details shop-cart-table">
+                                        <input type="text" value="{{user.full_name}}" name="full_name">
+                                        <input type="text" readonly value="{{user.user_name}}" name="user_name">
+                                        <input type="password" placeholder="old assword" name="password1">
+                                        <input type="password" placeholder="new password" name="password2">
+                                        
+                                        <button type="submit" data-text="register" class="button-one submit-button mt-15">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if user.type_user == 0 %}
+                        <div class="panel">
+                            <div class="my-account-menu">
+                                <a class="collapsed" data-parent="#accordion"  data-toggle="collapse"  href="" >
+                                Delete
+                                </a>
+                            </div>
+                        </div>	
+                        {% endif %}	
+		
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

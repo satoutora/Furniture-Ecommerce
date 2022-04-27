@@ -1,0 +1,56 @@
+.card {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+.card span {
+    position: absolute;
+    top: 0;
+    left: calc(100% / 6 * var(--i));
+    width: calc(100% / 6);
+    height: 100%;
+}
+.card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+}
+.card img:nth-child(2),
+.card span:hover + img {
+    opacity: 1;
+} 
+
+/* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="3d.css">
+</head>
+<body>
+    <div class="card">
+        <span style="--i:0"></span>
+        <img src="0.png">
+        <span style="--i:1"></span>
+        <img src="1.png">
+        <span style="--i:2"></span>
+        <img src="2.png">
+        <span style="--i:3"></span>
+        <img src="3.png">
+        <span style="--i:4"></span>
+        <img src="4.png">
+        <span style="--i:5"></span>
+        <img src="5.png">
+    </div>
+</body>
+
+</html> */

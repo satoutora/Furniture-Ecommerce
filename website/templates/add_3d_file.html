@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-area  pt-80 pb-80" style="background-color: antiquewhite;">
+    <div class="container" >
+        <form method="POST" enctype="multipart/form-data">	
+            <div class="row"> 
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="customer-login text-left">
+                        <div class="form-group">
+                            <label for="text"> Only support file format .glb .gltf </label>
+                            <input type="file" name="file3d">
+                        </div>
+                        <button type="submit" data-text="create" class="button-one submit-button mt-15">Create</button>
+                    </div>					
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock content %}

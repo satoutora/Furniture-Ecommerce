@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- HEADING-BANNER START -->
+    <div class="heading-banner-area overlay-bg">
+        <div class="container">
+            <!-- <img src="/static/uploads/{{shop.img}}"> -->
+            <div class="row">
+                <div class="col-md-12" style="background-image: url(/static/uploads/{{shop.img}});">
+                    <div class="heading-banner">
+                        <div class="heading-banner-title">
+                            <a href="/shop/{{shop.id}}"> <h2>{{shop.name}}</h2> </a>
+                        </div>
+                        <div class="breadcumbs pb-15" style="display: inline-flex;">
+                            <ul>
+                                <li><a style="color: black;">{{shop.address}}</a></li>
+                            </ul>
+                            <a href="/view_user/{{shop.id_user}}" class="button-one submit-button" data-text="{{manager.full_name}}" style="margin-left: 650px;">
+                                <h4 style="margin-top: 5px;"> Manager </h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HEADING-BANNER END -->
+<!-- PRODUCT-AREA START -->
+<div class="product-area single-pro-area pt-80 pb-80 product-style-2">
+    <div class="container">	
+        <div class="row shop-list single-pro-info no-sidebar">
+            <!-- Single-product start -->
+            <div class="col-lg-12">
+                <div class="single-product clearfix">
+                    <!-- Single-pro-slider Big-photo start -->
+                    <div class="single-pro-slider single-big-photo view-lightbox slider-for">
+                        <div>
+                            <img src="/static/uploads/{{furniture.img}}" alt="" />
+                            <a class="view-full-screen" href="/static/uploads/{{furniture.img}}"  data-lightbox="roadtrip" data-title="My caption">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <img src="" alt="" />
+                            <a class="view-full-screen" href=""  data-lightbox="roadtrip" data-title="My caption">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                    </div>	
+                    <!-- Single-pro-slider Big-photo end -->								
+                    <div class="product-info">
+                        <div class="fix">
+                            <h4 class="post-title floatleft">{{furniture.name}}</h4>
+                            <span class="pro-rating floatright">
+                                <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                            </span>
+                        </div>
+                        <div class="fix mb-20">
+                            <span class="pro-price">{{furniture.price}} VND</span>
+                        </div>
+                        <div class="product-description">
+                            <h4>{{furniture.describe}}</h4>
+                        </div>
+                        <!-- color start -->								
+                        <div class="color-filter single-pro-color mb-20 clearfix">
+                            
+                        </div>
+                        <!-- color end -->
+                        <!-- Size start -->
+                        <div class="size-filter single-pro-size mb-35 clearfix">
+                            <span class="pro-label new-label">{{furniture.status}}</span>
+                        </div>
+                        <!-- Size end -->
+                        <div class="clearfix">
+                            <form method="POST" action="{{ url_for('views.add_many_to_cart', id_furniture=furniture.id) }}">
+                            <div class="cart-plus-minus">
+                                <input type="number" readonly name="data" value="1" class="cart-plus-minus-box" min="1" max="1000">
+                            </div>
+                            
+                            <div class="product-action clearfix">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Wishlist"><i class="zmdi zmdi-favorite-outline"></i></a>
+                                <a href="#" data-toggle="modal"  data-target="#productModal" title="3D Preview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                <button type="submit">
+                                    <a data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                </button>
+                            </div>
+                            </form>
+                        </div>
+                        <!-- Single-pro-slider Small-photo start -->
+                        <div class="single-pro-slider single-sml-photo slider-nav">
+                            <div>
+                                <img src="/static/uploads/{{furniture.img}}" alt="" />
+                            </div>
+                        </div>
+                        <!-- Single-pro-slider Small-photo end -->
+                    </div>
+                </div>
+            </div>
+            <!-- Single-product end -->
+        </div>
+        <!-- single-product-tab start -->
+        <div class="single-pro-tab">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="single-pro-tab-menu">
+                        <!-- Nav tabs -->
+                        <ul class="">
+                            <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+                            <li><a href="#reviews"  data-toggle="tab">Reviews</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="description">
+                            <div class="pro-tab-info pro-description">
+                                <h3 class="tab-title title-border mb-30">{{furniture.name}}</h3>
+                                <h5> {{furniture.describe}} </h5>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="reviews">
+                            <div class="pro-tab-info pro-reviews">
+                                <div class="customer-review mb-60">
+                                    <h3 class="tab-title title-border mb-30">Customer review</h3>
+                                    <ul class="product-comments clearfix">
+                                        {% for lc in list_cmt %}
+                                        {% if lc.id_furniture == furniture.id %}
+                                        {% for lu in list_user %}
+                                        {% if lu.id == lc.id_user %}
+                                        <li class="mb-30">
+                                            <div class="pro-reviewer-comment">
+                                                <div class="fix">
+                                                    <div class="floatleft mbl-center">
+                                                        <a href="/view_user/{{lu.id}}"><h4 class="text-uppercase mb-0"> {{lu.full_name}} </h4></a>
+                                                        
+                                                    </div>
+                                                    {% if (user.id == lu.id) or (user.type_user == 0) %}
+                                                    <div class="comment-reply floatright">
+                                                        <a href="/delete_comment/{{lc.id}}" data-placement="top" title="delete"><i class="zmdi zmdi-close"></i></a>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                                <p class="mb-0">{{lc.title}}</p>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+                                        {% endfor %}
+                                        <br>
+                                    </ul>
+                                </div>
+                                <div class="leave-review">
+                                    <h3 class="tab-title title-border mb-30">Leave your review</h3>
+                                    
+                                    <div class="reply-box">
+                                        <form method="POST" action="{{ url_for('auth.add_comment', id_furniture=furniture.id) }}">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input type="text" readonly value="{{user.full_name}}" name="name" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <textarea class="custom-textarea" name="title" placeholder="Your review here..." ></textarea>
+                                                    <button type="submit" data-text="submit review" class="button-one submit-button mt-20">submit review</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>		
+                        </div>
+                        
+                    </div>									
+                </div>
+            </div>
+        </div>
+        <!-- single-product-tab end -->
+    </div>
+</div>
+<!-- PRODUCT-AREA END -->
+
+
+
+<div id="quickview-wrapper">
+    
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 </div>
+                 <div class="modal-body">
+                     <div class="modal-product">
+                         <div class="product-images">
+                             <div class="main-image images">
+                                {% if check_3d == 1%}
+                                <model-viewer src="/static/uploads/{{img_3d[0].name}}" alt="A 3D model of a car" shadow-intensity="1" camera-controls auto-rotate ar  
+                                    style="margin: 30px; height: 400px; width: 400px">
+                                </model-viewer>
+                                {% else %}
+                                {% if check_3d == 6%}
+                                <div class="card" style="margin: 30px; height: 400px; width: 400px">
+                                    <span style="--i:0"></span>
+                                    <img src="/static/uploads/{{img_3d[0].name}}">
+                                    <span style="--i:1"></span>
+                                    <img src="/static/uploads/{{img_3d[1].name}}">
+                                    <span style="--i:2"></span>
+                                    <img src="/static/uploads/{{img_3d[2].name}}">
+                                    <span style="--i:3"></span>
+                                    <img src="/static/uploads/{{img_3d[3].name}}">
+                                    <span style="--i:4"></span>
+                                    <img src="/static/uploads/{{img_3d[4].name}}">
+                                    <span style="--i:5"></span>
+                                    <img src="/static/uploads/{{img_3d[5].name}}">
+                                </div>
+                                {% else %}
+                                    <h3> This product don't have 3d preview </h3>
+                                {% endif %}
+                                {% endif %}
+                             </div>
+                         </div>
+
+                         <div class="product-info">
+                             <h1>3D preview</h1>
+                             {% if check_3d == 1%}
+                             <a href="#"> {{img_3d[0].name}} </a> <br> <br>
+                             {% if user.id == manager.id %}
+                             <a href="/delete_3d/{{furniture.id}}" class="button-one submit-button" data-text="Delete 3D model file" >
+                                Delete this 3D model
+                             </a>
+                             {% endif %}
+                             {% else %}
+                             {% if check_3d == 6%}
+                             <ul style="overflow-y:scroll; height: 400px;">
+                                {% for i in img_3d %}
+                                 <li style="height: 100px; width: 100px;">
+                                    <img src="/static/uploads/{{i.name}}">
+                                 </li>
+                                {% endfor %}
+                                {% if user.id == manager.id%}
+                                <a href="/delete_3d/{{furniture.id}}" class="button-one submit-button" data-text="Delete all" >
+                                Delete all 
+                                </a>
+                                {% endif %}
+                             </ul>
+                             {% else %}
+                             {% if user.id == manager.id%}
+                             <a href="/add_3d_file/{{furniture.id}}" class="button-one submit-button" data-text="Choose 3D model file" >
+                                Choose 3D model file 
+                             </a>
+                             <a href="/add_3d_img/{{furniture.id}}" class="button-one submit-button" data-text="Create 3D model image" >
+                                Create 3D model img 
+                             </a>
+                             {% endif %}
+                             {% endif %}
+                             {% endif %}
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+    
+ </div> 
+ 
+
+
+
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-area  pt-80 pb-80" style="background-color: antiquewhite;">
+    <div class="container" >
+        <form method="POST" enctype="multipart/form-data">	
+            <div class="row"> 
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="customer-login text-left">
+                        <h4 class="title-1 title-border text-uppercase mb-30">Edit shop</h4>
+                       
+                        <input type="text" value="{{shop.name}}" name="name">
+                        <input type="text" value="{{shop.address}}" name="address">
+             
+                        <div class="form-group">
+                            <label for="text"> Your shop banner (1920x300) </label>
+                            <input type="file" name="img">
+                        </div>
+
+                        <button type="submit" data-text="Update" class="button-one submit-button mt-15">Update</button>
+                    </div>					
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

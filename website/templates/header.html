@@ -1,0 +1,113 @@
+<!-- HEADER-AREA START -->
+<header id="sticky-menu" class="header header-2">
+    <div class="header-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4 col-xs-7">
+                    <div class="logo text-center">
+                        <a href="/"><img src="/static/img/logo/logo.png" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-5">
+                    
+                    <div class="mini-cart text-right" style="margin-top: 20px;">
+                        <ul>
+                            {% if user.is_authenticated %}
+                            <li style="margin-right: 20px;">
+                                <div class="cart-icon">
+                                <i class="zmdi zmdi-account">   </i>
+                                <a href="#" style="font-size: 20px;">{{ user.full_name }}</a>
+                                
+                                <div class="mini-cart-brief text-left">
+                                    <div class="cart-bottom  clearfix">
+                                        <a href="/view_user/{{user.id}}" class="button-one floatleft text-uppercase" data-text="View Account">My account</a>
+                                        <a href="/logout" class="button-one floatright text-uppercase" data-text="Log out">Log out</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a class="cart-icon" href="#">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                    <span>xx</span>
+                                </a>
+                                <div class="mini-cart-brief text-left">
+                                    <div class="cart-items">
+                                        <p class="mb-0">You have <span>{{count}} items</span> in your shopping bag</p>
+                                    </div>
+                                    <div class="all-cart-product clearfix">
+                                        <!-- {% for fu in list_ficOfUser %}
+                                        <div class="single-cart clearfix">
+                                            <div class="cart-photo">
+                                                <a href="#"><img src="/static/uploads/{{fu.img}}" alt="" /></a>
+                                            </div>
+                                            <div class="cart-info">
+                                                <h5><a href="#">{{fu.name}}</a></h5>
+                                                <p class="mb-0">Price : {{fu.price}} VND</p>
+                                                <p class="mb-0">Quantity : {{fu.quantity}} </p>
+                                            </div>
+                                        </div>
+                                        {% endfor %} -->
+                                    </div>
+                                    <div class="cart-totals">
+                                        <h5 class="mb-0">Total <span class="floatright">{{total}} VND</span></h5>
+                                    </div>
+                                    <div class="cart-bottom  clearfix">
+                                        <a href="/view_cart" class="button-one floatleft text-uppercase" data-text="View cart">View cart</a>
+                                        <a href="/check_out" class="button-one floatright text-uppercase" data-text="Check out">Check out</a>
+                                    </div>
+                                </div>
+                            </li>
+                            {% else %}
+                            <li>
+                                <a href="/login" class="button-one floatleft text-uppercase" data-text="Log in">Log in</a>
+                            </li>
+                            <li></li>
+                            <li>
+                                <a href="/sign_up" class="button-one floatleft text-uppercase" data-text="Sign up">Sign up</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN-MENU START -->
+    <div class="menu-toggle menu-toggle-2 hamburger hamburger--emphatic hidden-xs">
+        <div class="hamburger-box">
+            <div class="hamburger-inner"></div>
+        </div>
+    </div>
+    <div class="main-menu  hidden-xs" style="background-color: antiquewhite;">
+        <nav>
+            <ul>
+                <li><a href="/">home</a></li>
+
+                <li><a href="/my_shop">My shop</a></li>
+
+                <li><a>Shops</a>
+                    <div class="mega-menu menu-scroll">
+                        <div class="table">
+                            <div class="table-cell">
+                                <div class="half-width">
+                                    <ul>
+                                        {% for s in list_shop%}
+                                        <li><a href="/shop/{{s.id}}">{{s.name}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/">about us</a></li>
+                <li><a href="/">contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- MAIN-MENU END -->
+</header>
+<!-- HEADER-AREA END -->

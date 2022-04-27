@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-area  pt-80 pb-80" style="background-color: antiquewhite;">
+    <div class="container" >
+        <form method="POST" enctype="multipart/form-data">	
+            <div class="row"> 
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="customer-login text-left">
+                        <h4 class="title-1 title-border text-uppercase mb-30">Sign Up</h4>
+                       
+                        <input type="text" placeholder="Your Full name here..." name="full_name">
+                        <input type="text" placeholder="Your User name here..." name="user_name">
+                        <input type="password" placeholder="Password" name="password1">
+                        <input type="password" placeholder="Confirm password" name="password2">
+                        
+                        <p class="mb-0">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                            <label for="newsletter"><span>Sign up for our newsletter!</span></label>
+                        </p>
+                        <button type="submit" data-text="register" class="button-one submit-button mt-15">register</button>
+                    </div>					
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

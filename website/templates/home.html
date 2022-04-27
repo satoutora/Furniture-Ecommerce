@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- WRAPPER START -->
+       
+        <!-- SLIDER-AREA START  -->
+        <section class="slider-area slider-style-2">
+            <div class="bend niceties preview-2">
+                <div id="ensign-nivoslider" class="slides">	
+                    <img src="/static/img/bg1.jpg" alt="" title="#slider-direction-1"  />
+                    <img src="/static/img/bg.jpg" alt="" title="#slider-direction-2"  />
+                </div>
+                <!-- direction 1 -->
+                <div id="slider-direction-1" class="t-cn slider-direction">
+                    <div class="slider-progress"></div>
+                    <div class="slider-content t-lfl s-tb slider-1">
+                        <div class="title-container s-tb-c title-compress">
+                            <div class="layer-1">
+                                <div class="wow fadeInUpBig" data-wow-duration="2s" data-wow-delay="0.5s">
+                                    <h3 class="slider-title3 text-uppercase mb-0" >welcome to our</h3>
+                                </div>
+                                <div class="wow fadeInUpBig" data-wow-duration="2.5s" data-wow-delay="0.5s">
+                                    <h2 class="slider-title1 text-uppercase mb-0"><span class="hidden-xs">elegent </span>  furniture</h2>
+                                </div>
+                                <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
+                                    <h2 class="slider-title2 text-uppercase" >UET 2022</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
+                </div>
+            </div>
+        </section>
+        <!-- SLIDER-AREA END -->
+       
+        
+        <!-- BLGO-AREA START -->
+        <div class="blog-area blog-2 pt-50">
+            <div class="container">
+                <!-- Section-title start -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2 class="title-border">List stores</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- Section-title end -->
+                <div class="row">
+                    {% for shop in list_shop %}
+                    <!-- Single-blog start -->
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="single-blog mt-30">
+                            <div class="blog-photo">
+                                <a href="/shop/{{shop.id}}"><img src="/static/uploads/{{shop.img}}" style="height: 200px;" alt="" /></a>
+                                <div class="like-share text-center fix">
+                                    <a href="#"><i class="zmdi zmdi-favorite"></i><span>89 Like</span></a>
+                                    <a href="#"><i class="zmdi zmdi-comments"></i><span>59 Comments</span></a>
+                                    <a href="#"><i class="zmdi zmdi-share"></i><span>29 Share</span></a>
+                                </div>
+                            </div>
+                            <div class="blog-info"> 
+                                <div class="post-meta fix">
+                                    <div class="post-date floatleft"><span class="text-dark-red"></span></div>
+                                    <div class="post-year floatleft">
+                                        <h4 class="post-title"><a href="/shop/{{shop.id}}" tabindex="0">{{shop.name}}</a></h4>
+                                    </div>
+                                </div>
+                                <p>{{shop.address}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single-blog end -->
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- BLGO-AREA END -->
+        <!-- BRAND-LOGO-AREA START -->
+        <div class="brand-logo-area pt-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="brand">
+                            <div class="brand-slider">
+                                <div class="single-brand">
+                                    <a href="https://themeforest.net/user/bootexperts/portfolio" target="_blank"><img src="/static/img/brand/1.png" alt="" /></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="https://themeforest.net/user/codecarnival/portfolio" target="_blank"><img src="/static/img/brand/2.png" alt="" /></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="https://themeforest.net/user/devitems/portfolio" target="_blank"><img src="/static/img/brand/3.png" alt="" /></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="https://themeforest.net/user/hastech/portfolio" target="_blank"><img src="/static/img/brand/4.png" alt="" /></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="http://psdrightsell.com/" target="_blank"><img src="/static/img/brand/5.png" alt="" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BRAND-LOGO-AREA END -->
+        <!-- FOOTER START -->
+
+{% endblock content %}

@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- HEADING-BANNER START -->
+<div class="heading-banner-area overlay-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-banner">
+                    <div class="heading-banner-title">
+                        <h2>Shopping Cart</h2>
+                    </div>
+                    <div class="breadcumbs pb-15">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li>Shopping Cart</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HEADING-BANNER END -->
+
+<!-- SHOPPING-CART-AREA START -->
+<div class="shopping-cart-area  pt-80 pb-80">
+    <div class="container">	
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="shopping-cart">
+                    <!-- Nav tabs -->
+                    <ul class="cart-page-menu row clearfix mb-30">
+                        <li><a href="/view_cart">shopping cart</a></li>
+                        <li><a href="/check_out">check out</a></li>
+                        <li class="active"><a href="/order_tracking">order tracking</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- shopping-cart start -->
+                        <div class="tab-pane active" id="shopping-cart">
+                            <form action="#">
+                                <div class="shop-cart-table">
+                                    <div class="table-content table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">Product</th>
+                                                    <th class="product-price">Price</th>
+                                                    <th class="product-quantity">Ship to</th>
+                                                    <th class="product-remove">Status</th>
+                                                    <th class="product-subtotal">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for uo in user_order %}
+                                                <tr>
+                                                    {% for fur in list_furniture %}
+                                                    {% if uo.id_furniture == fur.id %}
+                                                    <td class="product-thumbnail  text-left">
+                                                        <!-- Single-product start -->
+                                                        <div class="single-product">
+                                                            <div class="product-img">
+                                                                <a href="/detail_furniture/{{fur.id}}"><img src="/static/uploads/{{fur.img}}" alt="" /></a>
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <h4 class="post-title"><a class="text-light-black" href="/detail_furniture/{{fur.id}}">{{fur.name}}</a></h4>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <!-- Single-product end -->												
+                                                    </td>
+                                                    <td class="product-price">{{fur.price}}VND x {{uo.quantity}}</td>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    <td class="product-quantity">
+                                                        <div>
+                                                            <h5> {{uo.p_address}}</h5>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        {% if uo.status == 0 %}
+                                                        <h4 style="color: blue;"> delivery </h4>
+                                                        {% elif uo.status == 1 %}
+                                                        <h4 style="color: green"> complete </h4>
+                                                        {% else %}
+                                                        <h4 style="color: red;"> cancelled </h4>
+                                                        {% endif %}
+                                                    </td>
+                                                    
+                                                    <td class="product-remove">
+                                                        {% if uo.status == 0 %}
+                                                        <a href="/cancel_order/{{uo.id}}" data-toggle="tooltip" data-placement="top" title="cancel"><i class="zmdi zmdi-close"></i></a>
+                                                        <a href="/complete_order/{{uo.id}}" style="margin-left: 15px;" data-toggle="tooltip" data-placement="top" title="complete"><i class="zmdi zmdi-check"></i></a>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>		
+                        </div>
+                        <!-- shopping-cart end -->
+                        
+                        <!-- check-out start -->
+                        <div class="tab-pane" id="check-out">
+                            <form action="#">
+                                <div class="shop-cart-table check-out-wrap">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="billing-details pr-20">
+                                                <h4 class="title-1 title-border text-uppercase mb-30">Ship to different address</h4>
+                                                <input type="text" placeholder="Your name here...">
+                                                <input type="text" placeholder="Phone here...">
+                                                <textarea class="custom-textarea" placeholder="Your address here..." ></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <!-- payment-method -->
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="payment-method mt-60  pl-20">
+                                                <h4 class="title-1 title-border text-uppercase mb-30">payment method</h4>
+                                                <div class="payment-accordion">
+                                                    <!-- Accordion start  -->
+                                                    <h3 class="payment-accordion-toggle active">Direct Bank Transfer</h3>
+                                                    <div class="payment-content default">
+                                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won't be shipped until the funds have cleared in our account.</p>
+                                                    </div> 
+                                                    <!-- Accordion end -->
+                                                    <!-- Accordion start -->
+                                                    <h3 class="payment-accordion-toggle">Cheque Payment</h3>
+                                                    <div class="payment-content">
+                                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                                    </div>
+                                                    <!-- Accordion end -->
+                                                    <!-- Accordion start -->
+                                                    <h3 class="payment-accordion-toggle">PayPal</h3>
+                                                    <div class="payment-content">
+                                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                                        
+                                                    </div>
+                                                    <!-- Accordion end --> 
+                                                    <button class="button-one submit-button mt-15" data-text="place order" type="submit">place order</button>			
+                                                </div>															
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>											
+                        </div>
+                        <!-- check-out end -->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SHOPPING-CART-AREA END -->
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-area  pt-80 pb-80" style="background-color: antiquewhite;">
+    <div class="container" >
+        <form method="POST" enctype="multipart/form-data">	
+            <div class="row"> 
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="customer-login text-left">
+                        <h4 class="title-1 title-border text-uppercase mb-30">Create new shop</h4>
+                       
+                        <input type="text" placeholder="Your Shop name here..." name="name">
+                        <input type="text" placeholder="Your shop address here..." name="address">
+             
+                        <div class="form-group">
+                            <label for="text"> Your shop banner (1920x300) </label>
+                            <input type="file" name="img">
+                        </div>
+
+                        <button type="submit" data-text="create" class="button-one submit-button mt-15">Create</button>
+                    </div>					
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

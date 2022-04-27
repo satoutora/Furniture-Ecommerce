@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-area  pt-80 pb-80" style="background-color: antiquewhite;">
+    <div class="container" >
+        <form method="POST" enctype="multipart/form-data">	
+            <div class="row"> 
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="customer-login text-left">
+                        <h4 class="title-1 title-border text-uppercase mb-30">Add new Furniture</h4>
+                       
+                        <input type="text" placeholder="Furniture name here..." name="name">
+                        <input type="number" placeholder="Price" name="price" min="0" max="999999999999">
+                        <br>
+                        <textarea class="custom-textarea" type="text" placeholder="Describe" name="describe"> </textarea>
+                        <br>
+                        <input type="radio" name="status" value="normal" checked> Nomarl <br>
+                        <input type="radio" name="status" value="new"> New <br>
+                        <input type="radio" name="status" value="sale"> Sale <br>
+                        
+                        <div class="form-group">
+                            <label for="text"> Furniture image (270x270) </label>
+                            <input type="file" name="img">
+                        </div>
+
+                        <button type="submit" data-text="create" class="button-one submit-button mt-15">Create</button>
+                    </div>					
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
