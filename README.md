@@ -22,10 +22,12 @@ a) Ưu điểm
 - Các tính năng có giao diện đơn giản, dễ hiểu cho người dùng
 - Có đầy đủ chức năng cơ bản của 1 website thương mại điện tử 
 - Hệ thống phù hợp cho mọi đối tượng người mua và người bán 
+
 b) Nhược điểm
 - Hệ thống chưa có những giải pháp tối ưu về hiệu suất
 - Phương pháp tìm kiếm, sắp xếp theo yêu cầu người dùng chưa tối ưu
 - Phương thức thanh toán chưa đa dạng 
+
 c) Phương hướng phát triển
 - Tối ưu hiệu suất cho hệ thống, đảm bảo hệ thống hoạt động với lưu lượng người dùng lớn 
 - Thêm các phương thức thanh toán online, ví điện tử,...
